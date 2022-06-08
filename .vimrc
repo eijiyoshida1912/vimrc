@@ -4,7 +4,6 @@ augroup END
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'crusoexia/vim-monokai'
 " JSのプラグイン
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
