@@ -3,6 +3,7 @@ augroup MyVimrc
 augroup END
 
 call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
 
 " JSのプラグイン
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
@@ -13,6 +14,8 @@ Plug 'othree/html5.vim'
 Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }
 
 Plug 'w0rp/ale'
+Plug 'preservim/nerdtree'
+
 call plug#end()
 
 
@@ -88,11 +91,22 @@ set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
+" Git Gutter
+" 記号の色を変更する
+let g:gitgutter_sign_column_always = 1
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=blue
+highlight GitGutterDelete ctermfg=red
+highlight clear SignColumn
+"" 反映時間を短くする(デフォルトは4000ms)
+set updatetime=250
+
 " ALE
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
 let g:ale_sign_column_always = 1
+let g:ale_change_sign_column_color = 1
 
 function! EnableJavascript()
   " Setup used libraries
@@ -105,4 +119,6 @@ function! EnableJavascript()
   let b:javascript_lib_use_d3 = 1
 endfunction
 autocmd MyVimrc FileType javascript,javascript.jsx call EnableJavascript()
+
+
 
